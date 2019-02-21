@@ -6,14 +6,20 @@ const validateSession = require('../middleware/validate-session');
 
 router.post('/', validateSession, (req, res) => {
     if (!req.errors) {
-        const chipFromRequest = {
-            artist: req.body.chip.artist,
-            chipType: req.body.chip.chipType,
-            chipFlavor: req.body.chip.chipFlavor,
-            rating: req.body.chip.rating,
-            imageURL: req.body.chip.imageURL 
-        }
-        Chip.create(chipFromRequest)
+        
+            let artist = req.body.chip.artist
+            let chipType = req.body.chip.chipType
+            let chipFlavor = req.body.chip.chipFlavor
+            let rating = req.body.chip.rating
+            let imageURL = req.body.chip.imageURL 
+        
+        Chip.create({
+            artist:artist,
+            chipType:chipType,
+            chipFlavor:chipFlavor,
+            rating:rating,
+            imageURL:imageURL
+        })
           .then(chip => res.status(200).json(chip))
           .catch(err => res.json(req.errors))
     } else {
