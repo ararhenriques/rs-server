@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Chip = require('../db').import('../models/chip');
 const validateSession = require('../middleware/validate-session');
-Chip.sync({force:true})
+//Chip.sync({force:true})
 
 
 router.post('/', validateSession, (req, res) => {
