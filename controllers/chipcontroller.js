@@ -57,7 +57,23 @@ router.delete('/:id', validateSession, (req, res) => {
 router.put('/:id', validateSession, (req, res) => {
     //declare varia
     if (!req.errors) {
-        Chip.update(req.body, {where: {id: req.params.id}})
+        let artist = req.body.artist;
+        let chipType = req.body.chipType;
+        let chipFlavor = req.body.chipFlavor;
+        let rating = req.body.rating;
+        let imageURL = req.body.imageURL ;
+        let user = req.user.id;
+
+        Chip.update(
+            {
+                artist:artist,
+                chipType:chipType,
+                chipFlavor:chipFlavor,
+                rating:rating,
+                imageURL:imageURL,
+                owner:user
+            },
+             {where: {id: req.params.id}})
             .then(chip => res.status(200).json(chip))
             .catch(err => res.json(req.errors))
     } else {
