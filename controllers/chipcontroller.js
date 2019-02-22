@@ -8,11 +8,11 @@ const validateSession = require('../middleware/validate-session');
 router.post('/', validateSession, (req, res) => {
     if (!req.errors) {
         
-            let artist = req.body.chip.artist;
-            let chipType = req.body.chip.chipType;
-            let chipFlavor = req.body.chip.chipFlavor;
-            let rating = req.body.chip.rating;
-            let imageURL = req.body.chip.imageURL ;
+            let artist = req.body.artist;
+            let chipType = req.body.chipType;
+            let chipFlavor = req.body.chipFlavor;
+            let rating = req.body.rating;
+            let imageURL = req.body.imageURL ;
             let user = req.user.id;
         
         Chip.create({
