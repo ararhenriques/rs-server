@@ -30,7 +30,7 @@ router.post('/', validateSession, (req, res) => {
     }
 });
 
-router.get('/', (req, res) => {
+router.get('/', validateSession, (req, res) => {
         Chip.findAll()
             .then(chip => res.status(200).json(chip))
             .catch(err => res.json(500).json({error:err}))
@@ -44,7 +44,7 @@ router.get('/artist', (req, res) => {
 
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', validateSession, (req, res) => {
     if (!req.errors) {
         Chip.destroy({ where: {id: req.params.id }})
             .then(chip => res.status(200).json(chip))
@@ -54,7 +54,7 @@ router.delete('/:id', (req, res) => {
     }
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', validateSession, (req, res) => {
     if (!req.errors) {
         Chip.update(req.body, {where: {id: req.params.id}})
             .then(chip => res.status(200).json(chip))
