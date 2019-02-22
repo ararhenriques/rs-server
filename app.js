@@ -16,7 +16,7 @@ console.log(__dirname);
 
 app.get('/', (req, res) => res.render('index'));
 
-app.use('/chip', chip);
 app.use('/user', user);
 app.use(require('./middleware/validate-session'));
+app.use('/chip', chip);
 app.listen(process.env.PORT, () => console.log(`app is listening on ${process.env.PORT}`));

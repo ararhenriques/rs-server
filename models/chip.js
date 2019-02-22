@@ -19,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
         imageURL: {
             type: DataTypes.TEXT,
             allowNull: false
+        },
+        owner:{
+            type:DataTypes.INTEGER, 
+            allowNull:false
         }
     })
 
